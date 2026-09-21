@@ -1,195 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Anna R. Miller — Video Producer</title>
+    <title>Anna R. Miller — Video Producer</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
-    html {
-      scroll-behavior: smooth;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      margin: 0;
-      background: #111;
-      color: #f5f5f5;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 40px;
-    }
+        body {
+            background: #f3f1ed;
+            color: #111;
+            font-family: "Inter", Helvetica, Arial, sans-serif;
+        }
 
-    .name {
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
+        .landing {
+            min-height: 100vh;
+            padding: 32px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-    nav a {
-      color: #f5f5f5;
-      text-decoration: none;
-      margin-left: 28px;
-      font-size: 14px;
-    }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    nav a:hover {
-      opacity: 0.6;
-    }
+        .name {
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
 
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 60px 40px;
-    }
+        .location {
+            font-size: 13px;
+            color: #777;
+        }
 
-    .hero h1 {
-      font-size: clamp(60px, 11vw, 160px);
-      line-height: 0.9;
-      letter-spacing: -0.06em;
-      margin: 0;
-      max-width: 1100px;
-    }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            text-align: center;
+        }
 
-    .hero p {
-      font-size: 20px;
-      margin-top: 40px;
-      color: #aaa;
-    }
+        h1 {
+            font-size: clamp(56px, 9vw, 140px);
+            font-weight: 400;
+            letter-spacing: -0.065em;
+            line-height: 0.9;
+            margin-bottom: 45px;
+        }
 
-    .reel {
-      margin-top: 60px;
-      aspect-ratio: 16 / 9;
-      background: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
-      font-size: 14px;
-    }
+        .work-link {
+            color: #111;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border-bottom: 1px solid #111;
+            padding-bottom: 5px;
+            transition: opacity 0.25s ease;
+        }
 
-    section {
-      padding: 100px 40px;
-      border-top: 1px solid #333;
-    }
+        .work-link:hover {
+            opacity: 0.45;
+        }
 
-    section h2 {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #888;
-      margin-bottom: 50px;
-    }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #777;
+        }
 
-    .about {
-      max-width: 800px;
-      font-size: clamp(28px, 4vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
+        @media (max-width: 700px) {
+            .landing {
+                padding: 24px 22px;
+            }
 
-    .contact {
-      font-size: clamp(40px, 7vw, 100px);
-      letter-spacing: -0.05em;
-    }
+            .location {
+                display: none;
+            }
 
-    .contact a {
-      color: white;
-      text-decoration: none;
-    }
+            h1 {
+                font-size: clamp(52px, 16vw, 90px);
+                line-height: 0.92;
+            }
 
-    footer {
-      padding: 30px 40px;
-      color: #666;
-      font-size: 13px;
-    }
-
-    @media (max-width: 600px) {
-      header,
-      .hero,
-      section,
-      footer {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      nav a {
-        margin-left: 12px;
-      }
-    }
-  </style>
+            footer {
+                font-size: 11px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="name">ANNA R. MILLER</div>
+    <div class="landing">
 
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+        <header>
+            <div class="name">ANNA R. MILLER</div>
+            <div class="location">NEW YORK</div>
+        </header>
 
-  <main>
+        <main>
+            <h1>Video Producer</h1>
 
-    <section class="hero">
-      <h1>Video<br>Producer.</h1>
+            <a class="work-link" href="reels.html">
+                View My Work →
+            </a>
+        </main>
 
-      <p>Creative production · Storytelling · Video</p>
+        <footer>
+            <div>© 2026 Anna R. Miller</div>
+            <div>Video · Editorial · Production</div>
+        </footer>
 
-      <div class="reel">
-        YOUR REEL WILL GO HERE
-      </div>
-    </section>
-
-
-    <section id="work">
-      <h2>Selected Work</h2>
-
-      <div class="about">
-        A selection of projects I've produced.
-      </div>
-    </section>
-
-
-    <section id="about">
-      <h2>About</h2>
-
-      <div class="about">
-        I'm a video producer focused on creating thoughtful,
-        compelling work from concept through final delivery.
-      </div>
-    </section>
-
-
-    <section id="contact">
-      <h2>Contact</h2>
-
-      <div class="contact">
-        <a href="mailto:YOUR-EMAIL-HERE">
-          Get in touch →
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    © 2026 Anna R. Miller
-  </footer>
+    </div>
 
 </body>
 </html>
