@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Selected Reels — Anna R. Miller</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #111;
+            color: #f3f1ed;
+            font-family: "Inter", Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 32px 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header a {
+            color: #f3f1ed;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 45px;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #666;
+            color: #f3f1ed;
+            padding: 15px 5px;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+        }
+
+        input:focus {
+            border-bottom-color: #f3f1ed;
+        }
+
+        button {
+            margin-top: 30px;
+            background: transparent;
+            color: #f3f1ed;
+            border: 1px solid #666;
+            padding: 12px 25px;
+            font-family: inherit;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        button:hover {
+            background: #f3f1ed;
+            color: #111;
+        }
+
+        #error {
+            margin-top: 20px;
+            color: #999;
+            font-size: 12px;
+            display: none;
+        }
+
+        #portfolio {
+            display: none;
+            padding: 100px 0;
+        }
+
+        #portfolio h1 {
+            font-size: clamp(40px, 7vw, 100px);
+            letter-spacing: -0.06em;
+            text-transform: none;
+            margin-bottom: 80px;
+        }
+
+        .project {
+            margin-bottom: 100px;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .project-info {
+            margin-top: 20px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .project-description {
+            color: #888;
+            font-size: 13px;
+        }
+
+        @media (max-width: 700px) {
+            .page {
+                padding: 24px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <header>
+        <a href="index.html">ANNA R. MILLER</a>
+        <a href="index.html">← Back</a>
+    </header>
+
+
+    <div class="content">
+
+        <div class="login" id="login">
+
+            <h1>Selected Reels</h1>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                autocomplete="off"
+            >
+
+            <button onclick="checkPassword()">
+                Enter →
+            </button>
+
+            <div id="error">
+                Incorrect password.
+            </div>
+
+        </div>
+
+
+        <div id="portfolio">
+
+            <h1>Selected Reels</h1>
+
+            <div class="project">
+
+                <div class="video-placeholder">
+                    REEL
+                </div>
+
+                <div class="project-info">
+                    <div class="project-title">
+                        Project One
+                    </div>
+
+                    <div class="project-description">
+                        Producer · CNN · International Affairs
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="video-placeholder">
+                    REEL
+                </div>
+
+                <div class="project-info">
+                    <div class="project-title">
+                        Project Two
+                    </div>
+
+                    <div class="project-description">
+                        Producer · Field Production
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    function checkPassword() {
+
+        const password =
+            document.getElementById("password").value;
+
+        /*
+         * TEMPORARY PASSWORD
+         *
+         * We'll replace this later.
+         */
+
+        const correctPassword = "CHANGE-ME";
+
+        if (password === correctPassword) {
+
+            document.getElementById("login").style.display = "none";
+
+            document.getElementById("portfolio").style.display = "block";
+
+        } else {
+
+            document.getElementById("error").style.display = "block";
+
+        }
+    }
+
+    document
+        .getElementById("password")
+        .addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+
+        });
+
+</script>
+
+</body>
+</html>
+
