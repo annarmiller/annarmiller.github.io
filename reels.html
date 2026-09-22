@@ -756,7 +756,7 @@
         });
 
 
-    /* OPEN VIDEO */
+    /* OPEN REEL 1 */
 
     function openVideo() {
 
@@ -770,6 +770,31 @@
 
         videoFrame.src =
             "https://www.youtube-nocookie.com/embed/qqrm6Ov439o?autoplay=1&rel=0";
+
+
+        lightbox.classList.add("active");
+
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    /* OPEN REEL 2 */
+
+    function openVideo2() {
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+
+        const videoFrame =
+            document.getElementById("video-frame");
+
+
+        videoFrame.src =
+            "https://www.youtube-nocookie.com/embed/vy5V6ctXc3Q?autoplay=1&rel=0";
 
 
         lightbox.classList.add("active");
