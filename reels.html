@@ -42,14 +42,17 @@
 
         .content {
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .login {
+            min-height: calc(100vh - 64px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             max-width: 420px;
+            margin: 0 auto;
             text-align: center;
         }
 
@@ -103,6 +106,8 @@
             display: none;
         }
 
+        /* PORTFOLIO */
+
         #portfolio {
             display: none;
             padding: 100px 0;
@@ -114,21 +119,92 @@
             text-transform: none;
             margin-bottom: 80px;
         }
-.video-container {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    margin-bottom: 60px;
-}
 
-.video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
         .project {
+            width: 100%;
+            max-width: 1100px;
             margin-bottom: 100px;
         }
+
+        /* VIDEO THUMBNAIL */
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            cursor: pointer;
+            background: #222;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .video-thumbnail:hover img {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        /* PLAY BUTTON */
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 64px;
+            height: 64px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(0, 0, 0, 0.15);
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .play-button::after {
+            content: "";
+            margin-left: 4px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 12px solid #fff;
+        }
+
+        .video-thumbnail:hover .play-button {
+            background: rgba(0, 0, 0, 0.35);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        /* PROJECT TITLE */
+
+        .project-title {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .project-description {
+            margin-top: 7px;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* PLACEHOLDER REELS */
 
         .video-placeholder {
             width: 100%;
@@ -140,23 +216,100 @@
             color: #666;
         }
 
-        .project-info {
-            margin-top: 20px;
+        /* LIGHTBOX */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+
+            background: rgba(0, 0, 0, 0.82);
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px;
         }
 
-        .project-title {
-            font-size: 18px;
-            margin-bottom: 7px;
+        .lightbox.active {
+            display: flex;
         }
 
-        .project-description {
-            color: #888;
-            font-size: 13px;
+        .lightbox-video {
+            position: relative;
+            width: min(1100px, 90vw);
+            aspect-ratio: 16 / 9;
+            background: #000;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .lightbox-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* CLOSE BUTTON */
+
+        .lightbox-close {
+            position: absolute;
+            top: -45px;
+            right: 0;
+
+            margin: 0;
+            padding: 0;
+
+            border: none;
+            background: transparent;
+
+            color: #f3f1ed;
+            font-size: 30px;
+            font-weight: 300;
+            line-height: 1;
+
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover {
+            background: transparent;
+            color: #fff;
         }
 
         @media (max-width: 700px) {
+
             .page {
                 padding: 24px 22px;
+            }
+
+            #portfolio {
+                padding: 70px 0;
+            }
+
+            #portfolio h1 {
+                margin-bottom: 50px;
+            }
+
+            .project {
+                margin-bottom: 70px;
+            }
+
+            .project-title {
+                font-size: 16px;
+            }
+
+            .lightbox {
+                padding: 20px;
+            }
+
+            .lightbox-video {
+                width: 100%;
+            }
+
+            .lightbox-close {
+                top: -40px;
+                font-size: 26px;
             }
         }
     </style>
@@ -173,6 +326,8 @@
 
 
     <div class="content">
+
+        <!-- PASSWORD SCREEN -->
 
         <div class="login" id="login">
 
@@ -196,41 +351,59 @@
         </div>
 
 
+        <!-- PORTFOLIO -->
+
         <div id="portfolio">
 
             <h1>Selected Reels</h1>
-<div class="project">
-    <h2>Gaza's Humanitarian Crisis (For Fareed Zakaria GPS)</h2>
 
-    <div class="video-container">
-        <iframe
-            src="https://www.youtube-nocookie.com/embed/qqrm6Ov439o"
-            title="Gaza's Humanitarian Crisis (For Fareed Zakaria GPS)"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-        </iframe>
-    </div>
-</div>
+
+            <!-- FIRST REEL -->
+
+            <div class="project">
+
+                <div
+                    class="video-thumbnail"
+                    onclick="openVideo()"
+                >
+
+                    <img
+                        src="https://i.ytimg.com/vi/qqrm6Ov439o/maxresdefault.jpg"
+                        alt="Gaza's Humanitarian Crisis"
+                        onerror="this.src='https://i.ytimg.com/vi/qqrm6Ov439o/hqdefault.jpg'"
+                    >
+
+                    <div class="play-button"></div>
+
+                </div>
+
+                <div class="project-title">
+                    Gaza's Humanitarian Crisis (For Fareed Zakaria GPS)
+                </div>
+
+            </div>
+
+
+            <!-- PLACEHOLDER PROJECT -->
+
             <div class="project">
 
                 <div class="video-placeholder">
                     REEL
                 </div>
 
-                <div class="project-info">
-                    <div class="project-title">
-                        Project One
-                    </div>
+                <div class="project-title">
+                    Project One
+                </div>
 
-                    <div class="project-description">
-                        Producer · CNN · International Affairs
-                    </div>
+                <div class="project-description">
+                    Producer · CNN · International Affairs
                 </div>
 
             </div>
 
+
+            <!-- PLACEHOLDER PROJECT -->
 
             <div class="project">
 
@@ -238,18 +411,15 @@
                     REEL
                 </div>
 
-                <div class="project-info">
-                    <div class="project-title">
-                        Project Two
-                    </div>
+                <div class="project-title">
+                    Project Two
+                </div>
 
-                    <div class="project-description">
-                        Producer · Field Production
-                    </div>
+                <div class="project-description">
+                    Producer · Field Production
                 </div>
 
             </div>
-
 
         </div>
 
@@ -258,18 +428,46 @@
 </div>
 
 
+<!-- VIDEO LIGHTBOX -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+    onclick="closeVideo(event)"
+>
+
+    <div class="lightbox-video">
+
+        <button
+            class="lightbox-close"
+            onclick="closeVideo()"
+            aria-label="Close video"
+        >
+            ×
+        </button>
+
+        <iframe
+            id="video-frame"
+            src=""
+            title="Gaza's Humanitarian Crisis (For Fareed Zakaria GPS)"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</div>
+
+
 <script>
+
+    /* PASSWORD */
 
     function checkPassword() {
 
         const password =
             document.getElementById("password").value;
-
-        /*
-         * TEMPORARY PASSWORD
-         *
-         * We'll replace this later.
-         */
 
         const correctPassword = "CHANGE-ME";
 
@@ -286,6 +484,9 @@
         }
     }
 
+
+    /* ENTER KEY FOR PASSWORD */
+
     document
         .getElementById("password")
         .addEventListener("keydown", function(event) {
@@ -296,8 +497,51 @@
 
         });
 
+
+    /* OPEN VIDEO */
+
+    function openVideo() {
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const videoFrame =
+            document.getElementById("video-frame");
+
+        videoFrame.src =
+            "https://www.youtube-nocookie.com/embed/qqrm6Ov439o?autoplay=1&rel=0";
+
+        lightbox.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+    }
+
+
+    /* CLOSE VIDEO */
+
+    function closeVideo(event) {
+
+        if (
+            event &&
+            event.target !== document.getElementById("lightbox")
+        ) {
+            return;
+        }
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const videoFrame =
+            document.getElementById("video-frame");
+
+        videoFrame.src = "";
+
+        lightbox.classList.remove("active");
+
+        document.body.style.overflow = "";
+    }
+
 </script>
 
 </body>
 </html>
-
