@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SELECTED REELS — Anna R. Miller</title>
+    <title>Selected Reels — Anna R. Miller</title>
 
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
 
         body {
             background: #111;
@@ -22,17 +25,23 @@
             min-height: 100vh;
         }
 
+
+        /* PAGE */
+
         .page {
             min-height: 100vh;
             padding: 32px 40px;
-            display: flex;
-            flex-direction: column;
         }
+
+
+        /* HEADER */
 
         header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
+
 
         header a {
             color: #f3f1ed;
@@ -40,23 +49,38 @@
             font-size: 13px;
         }
 
-        .content {
-            flex: 1;
+
+        header a:hover {
+            opacity: 0.65;
         }
+
+
+        /* CONTENT */
+
+        .content {
+            width: 100%;
+        }
+
+
+        /* LOGIN */
 
         .login {
             min-height: calc(100vh - 64px);
+
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
             width: 100%;
             max-width: 420px;
             margin: 0 auto;
+
             text-align: center;
         }
 
-        h1 {
+
+        .login h1 {
             font-size: 14px;
             font-weight: 400;
             text-transform: uppercase;
@@ -64,40 +88,58 @@
             margin-bottom: 45px;
         }
 
+
         input {
             width: 100%;
+
             background: transparent;
             border: none;
             border-bottom: 1px solid #666;
+
             color: #f3f1ed;
+
             padding: 15px 5px;
+
+            font-family: inherit;
             font-size: 18px;
+
             text-align: center;
             outline: none;
         }
+
 
         input:focus {
             border-bottom-color: #f3f1ed;
         }
 
+
         button {
             margin-top: 30px;
+
             background: transparent;
             color: #f3f1ed;
+
             border: 1px solid #666;
+
             padding: 12px 25px;
+
             font-family: inherit;
             font-size: 12px;
+
             text-transform: uppercase;
             letter-spacing: 0.05em;
+
             cursor: pointer;
+
             transition: all 0.25s ease;
         }
+
 
         button:hover {
             background: #f3f1ed;
             color: #111;
         }
+
 
         #error {
             margin-top: 20px;
@@ -106,61 +148,87 @@
             display: none;
         }
 
+
         /* PORTFOLIO */
 
         #portfolio {
             display: none;
-            padding: 100px 0;
+            padding: 70px 0 80px;
         }
 
-        #portfolio h1 {
-            font-size: clamp(40px, 7vw, 100px);
-            letter-spacing: -0.06em;
-            text-transform: none;
-            margin-bottom: 80px;
+
+        /* REEL GRID */
+
+        .project-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            column-gap: 28px;
+            row-gap: 70px;
+
+            width: 100%;
         }
+
+
+        /* INDIVIDUAL PROJECT */
 
         .project {
             width: 100%;
-            max-width: 1100px;
-            margin-bottom: 100px;
         }
+
 
         /* VIDEO THUMBNAIL */
 
         .video-thumbnail {
             position: relative;
+
             width: 100%;
             aspect-ratio: 16 / 9;
+
             overflow: hidden;
+
             cursor: pointer;
+
             background: #222;
         }
+
 
         .video-thumbnail img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+
             display: block;
-            transition: transform 0.5s ease, opacity 0.5s ease;
+
+            transition:
+                transform 0.5s ease,
+                opacity 0.5s ease;
         }
+
 
         .video-thumbnail:hover img {
             transform: scale(1.02);
-            opacity: 0.9;
+            opacity: 0.88;
         }
+
 
         /* PLAY BUTTON */
 
         .play-button {
             position: absolute;
+
             top: 50%;
             left: 50%;
+
             transform: translate(-50%, -50%);
 
-            width: 64px;
-            height: 64px;
+            width: 54px;
+            height: 54px;
+
             border: 1px solid rgba(255, 255, 255, 0.8);
+
             border-radius: 50%;
 
             display: flex;
@@ -174,87 +242,128 @@
                 transform 0.25s ease;
         }
 
+
         .play-button::after {
             content: "";
-            margin-left: 4px;
+
+            margin-left: 3px;
+
             width: 0;
             height: 0;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            border-left: 12px solid #fff;
+
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 11px solid #fff;
         }
+
 
         .video-thumbnail:hover .play-button {
             background: rgba(0, 0, 0, 0.35);
-            transform: translate(-50%, -50%) scale(1.05);
+
+            transform:
+                translate(-50%, -50%)
+                scale(1.05);
         }
+
 
         /* PROJECT TITLE */
 
         .project-title {
-            margin-top: 20px;
-            font-size: 18px;
+            margin-top: 16px;
+
+            font-size: 16px;
             font-weight: 400;
+
             line-height: 1.4;
         }
 
+
+        /* PROJECT DESCRIPTION */
+
         .project-description {
-            margin-top: 7px;
+            margin-top: 6px;
+
             color: #888;
-            font-size: 13px;
+
+            font-size: 12px;
+
+            line-height: 1.5;
         }
+
 
         /* PLACEHOLDER REELS */
 
         .video-placeholder {
             width: 100%;
             aspect-ratio: 16 / 9;
+
             background: #222;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             color: #666;
+
+            font-size: 12px;
+            letter-spacing: 0.05em;
         }
+
 
         /* LIGHTBOX */
 
         .lightbox {
             position: fixed;
+
             inset: 0;
+
             z-index: 1000;
 
             background: rgba(0, 0, 0, 0.82);
 
             display: none;
+
             align-items: center;
             justify-content: center;
 
             padding: 40px;
         }
 
+
         .lightbox.active {
             display: flex;
         }
 
+
         .lightbox-video {
             position: relative;
+
             width: min(1100px, 90vw);
+
             aspect-ratio: 16 / 9;
+
             background: #000;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, 0.6);
         }
+
 
         .lightbox-video iframe {
             width: 100%;
             height: 100%;
+
             border: none;
+
             display: block;
         }
+
 
         /* CLOSE BUTTON */
 
         .lightbox-close {
             position: absolute;
+
             top: -45px;
             right: 0;
 
@@ -262,76 +371,124 @@
             padding: 0;
 
             border: none;
+
             background: transparent;
 
             color: #f3f1ed;
+
             font-size: 30px;
             font-weight: 300;
+
             line-height: 1;
 
             cursor: pointer;
         }
+
 
         .lightbox-close:hover {
             background: transparent;
             color: #fff;
         }
 
-        @media (max-width: 700px) {
+
+        /* TABLET */
+
+        @media (max-width: 900px) {
+
+            .project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+
+                column-gap: 24px;
+                row-gap: 60px;
+            }
+
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
 
             .page {
                 padding: 24px 22px;
             }
 
+
             #portfolio {
-                padding: 70px 0;
+                padding: 55px 0 60px;
             }
 
-            #portfolio h1 {
-                margin-bottom: 50px;
+
+            .project-grid {
+                grid-template-columns: 1fr;
+
+                row-gap: 55px;
             }
 
-            .project {
-                margin-bottom: 70px;
-            }
 
             .project-title {
                 font-size: 16px;
             }
 
+
+            .project-description {
+                font-size: 12px;
+            }
+
+
             .lightbox {
                 padding: 20px;
             }
+
 
             .lightbox-video {
                 width: 100%;
             }
 
+
             .lightbox-close {
                 top: -40px;
                 font-size: 26px;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
+
 
 <div class="page">
 
+
+    <!-- HEADER -->
+
     <header>
-        <a href="index.html">ANNA R. MILLER</a>
-        <a href="index.html">← Back</a>
+
+        <a href="index.html">
+            ANNA R. MILLER
+        </a>
+
+        <a href="index.html">
+            ← Back
+        </a>
+
     </header>
 
 
     <div class="content">
 
+
         <!-- PASSWORD SCREEN -->
 
         <div class="login" id="login">
 
-            <h1>SELECTED REELS</h1>
+            <h1>
+                Selected Reels
+            </h1>
+
 
             <input
                 type="password"
@@ -340,9 +497,11 @@
                 autocomplete="off"
             >
 
+
             <button onclick="checkPassword()">
                 Enter →
             </button>
+
 
             <div id="error">
                 Incorrect password.
@@ -355,72 +514,147 @@
 
         <div id="portfolio">
 
-            <h1>SELECTED REELS</h1>
+
+            <!-- REEL GRID -->
+
+            <div class="project-grid">
 
 
-            <!-- FIRST REEL -->
+                <!-- REEL 1 -->
 
-            <div class="project">
+                <div class="project">
 
-                <div
-                    class="video-thumbnail"
-                    onclick="openVideo()"
-                >
+                    <div
+                        class="video-thumbnail"
+                        onclick="openVideo()"
+                    >
 
-                   <img
-    src="gaza-thumbnail.jpg"
-    alt="Gaza's Humanitarian Crisis"
->
+                        <img
+                            src="gaza-thumbnail.jpg"
+                            alt="What is life actually like in Gaza right now?"
+                        >
 
-                    <div class="play-button"></div>
+                        <div class="play-button"></div>
+
+                    </div>
+
+
+                    <div class="project-title">
+                        What is life actually like in Gaza right now?
+                    </div>
+
+
+                    <div class="project-description">
+                        <em>Fareed Zakaria GPS</em> | Aired June 01, 2025
+                    </div>
 
                 </div>
 
-                <div class="project-title">
-    What is life actually like in Gaza right now?
-</div>
 
-<div class="project-description">
-    <em>Fareed Zakaria GPS</em> | Aired June 01, 2025
-</div>
+                <!-- REEL 2 -->
 
-            </div>
+                <div class="project">
+
+                    <div class="video-placeholder">
+                        REEL
+                    </div>
 
 
-            <!-- PLACEHOLDER PROJECT -->
+                    <div class="project-title">
+                        Project Two
+                    </div>
 
-            <div class="project">
 
-                <div class="video-placeholder">
-                    REEL
+                    <div class="project-description">
+                        Producer · CNN · International Affairs
+                    </div>
+
                 </div>
 
-                <div class="project-title">
-                    Project One
+
+                <!-- REEL 3 -->
+
+                <div class="project">
+
+                    <div class="video-placeholder">
+                        REEL
+                    </div>
+
+
+                    <div class="project-title">
+                        Project Three
+                    </div>
+
+
+                    <div class="project-description">
+                        Producer · Field Production
+                    </div>
+
                 </div>
 
-                <div class="project-description">
-                    Producer · CNN · International Affairs
+
+                <!-- REEL 4 -->
+
+                <div class="project">
+
+                    <div class="video-placeholder">
+                        REEL
+                    </div>
+
+
+                    <div class="project-title">
+                        Project Four
+                    </div>
+
+
+                    <div class="project-description">
+                        Producer · Documentary
+                    </div>
+
                 </div>
 
-            </div>
+
+                <!-- REEL 5 -->
+
+                <div class="project">
+
+                    <div class="video-placeholder">
+                        REEL
+                    </div>
 
 
-            <!-- PLACEHOLDER PROJECT -->
+                    <div class="project-title">
+                        Project Five
+                    </div>
 
-            <div class="project">
 
-                <div class="video-placeholder">
-                    REEL
+                    <div class="project-description">
+                        Producer · Field Production
+                    </div>
+
                 </div>
 
-                <div class="project-title">
-                    Project Two
+
+                <!-- REEL 6 -->
+
+                <div class="project">
+
+                    <div class="video-placeholder">
+                        REEL
+                    </div>
+
+
+                    <div class="project-title">
+                        Project Six
+                    </div>
+
+
+                    <div class="project-description">
+                        Producer · International Affairs
+                    </div>
+
                 </div>
 
-                <div class="project-description">
-                    Producer · Field Production
-                </div>
 
             </div>
 
@@ -439,7 +673,9 @@
     onclick="closeVideo(event)"
 >
 
+
     <div class="lightbox-video">
+
 
         <button
             class="lightbox-close"
@@ -449,14 +685,16 @@
             ×
         </button>
 
+
         <iframe
             id="video-frame"
             src=""
-            title="Gaza's Humanitarian Crisis (For Fareed Zakaria GPS)"
+            title="What is life actually like in Gaza right now?"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
         </iframe>
+
 
     </div>
 
@@ -465,6 +703,7 @@
 
 <script>
 
+
     /* PASSWORD */
 
     function checkPassword() {
@@ -472,19 +711,26 @@
         const password =
             document.getElementById("password").value;
 
-        const correctPassword = "CHANGE-ME";
+
+        const correctPassword =
+            "CHANGE-ME";
+
 
         if (password === correctPassword) {
 
-            document.getElementById("login").style.display = "none";
+            document.getElementById("login").style.display =
+                "none";
 
-            document.getElementById("portfolio").style.display = "block";
+            document.getElementById("portfolio").style.display =
+                "block";
 
         } else {
 
-            document.getElementById("error").style.display = "block";
+            document.getElementById("error").style.display =
+                "block";
 
         }
+
     }
 
 
@@ -495,7 +741,9 @@
         .addEventListener("keydown", function(event) {
 
             if (event.key === "Enter") {
+
                 checkPassword();
+
             }
 
         });
@@ -508,15 +756,21 @@
         const lightbox =
             document.getElementById("lightbox");
 
+
         const videoFrame =
             document.getElementById("video-frame");
+
 
         videoFrame.src =
             "https://www.youtube-nocookie.com/embed/qqrm6Ov439o?autoplay=1&rel=0";
 
+
         lightbox.classList.add("active");
 
-        document.body.style.overflow = "hidden";
+
+        document.body.style.overflow =
+            "hidden";
+
     }
 
 
@@ -528,23 +782,33 @@
             event &&
             event.target !== document.getElementById("lightbox")
         ) {
+
             return;
+
         }
+
 
         const lightbox =
             document.getElementById("lightbox");
 
+
         const videoFrame =
             document.getElementById("video-frame");
 
+
         videoFrame.src = "";
+
 
         lightbox.classList.remove("active");
 
+
         document.body.style.overflow = "";
+
     }
 
+
 </script>
+
 
 </body>
 </html>
