@@ -1,216 +1,581 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8">
+<!-- Mobile responsiveness -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Anna R. Miller — Video Producer</title>
+<title>Your Name — Video Producer</title>
 
-  <style>
+<style>
+    /* ------------------------------
+       RESET
+    ------------------------------ */
+
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html,
     body {
-      background: #111;
-      color: #f5f5f5;
-      font-family: Arial, Helvetica, sans-serif;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #000;
+        color: #fff;
     }
 
-    /* =========================
-       LANDING PAGE
-       ========================= */
 
-    .landing {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 32px 40px;
-    }
-
-    /* Video background */
+    /* ------------------------------
+       BACKGROUND VIDEO
+    ------------------------------ */
 
     .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
+
+        z-index: 0;
     }
 
-    /* Darkens the video */
 
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.48);
-      z-index: 1;
+    /* ------------------------------
+       DARK OVERLAY
+    ------------------------------ */
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: rgba(0, 0, 0, 0.38);
+
+        z-index: 1;
     }
 
-    /* Content sits above video */
 
-    .landing header,
-    .landing main,
-    .landing footer {
-      position: relative;
-      z-index: 2;
+    /* ------------------------------
+       MAIN CONTENT
+    ------------------------------ */
+
+    .hero {
+        position: relative;
+
+        width: 100%;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        z-index: 2;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+
+    /* ------------------------------
+       TITLE
+    ------------------------------ */
+
+    .title {
+        font-size: clamp(2rem, 5vw, 5rem);
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+
+        margin-bottom: 35px;
+
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
     }
 
-    .name {
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
+
+    /* ------------------------------
+       VIEW MY WORK BUTTON
+    ------------------------------ */
+
+    .work-button {
+        display: inline-block;
+
+        padding: 15px 30px;
+
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 0;
+
+        color: #fff;
+        background: transparent;
+
+        font-size: 13px;
+        font-weight: 500;
+
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+
+        text-decoration: none;
+
+        cursor: pointer;
+
+        transition:
+            background 0.3s ease,
+            color 0.3s ease,
+            border-color 0.3s ease;
     }
 
-    .location {
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.65);
+    .work-button:hover {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
     }
 
-    nav a {
-      color: #f5f5f5;
-      text-decoration: none;
-      margin-left: 28px;
-      font-size: 13px;
-      transition: opacity 0.25s ease;
-    }
 
-    nav a:hover {
-      opacity: 0.5;
-    }
+    /* ------------------------------
+       PASSWORD MODAL
+    ------------------------------ */
 
-    .landing main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-      text-align: center;
-    }
+    .password-modal {
+        position: fixed;
 
-    .landing h1 {
-      font-size: clamp(56px, 9vw, 140px);
-      font-weight: 400;
-      letter-spacing: -0.065em;
-      line-height: 0.9;
-      margin-bottom: 45px;
-    }
+        top: 0;
+        left: 0;
 
-    .work-link {
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-      padding-bottom: 5px;
-      transition: opacity 0.25s ease;
-    }
+        width: 100%;
+        height: 100%;
 
-    .work-link:hover {
-      opacity: 0.5;
-    }
-
-    .landing footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    /* =========================
-       CONTENT SECTIONS
-       ========================= */
-
-    section {
-      padding: 100px 40px;
-      border-top: 1px solid #333;
-    }
-
-    section h2 {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #888;
-      margin-bottom: 50px;
-    }
-
-    .about {
-      max-width: 800px;
-      font-size: clamp(28px, 4vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .contact {
-      font-size: clamp(40px, 7vw, 100px);
-      letter-spacing: -0.05em;
-    }
-
-    .contact a {
-      color: white;
-      text-decoration: none;
-    }
-
-    /* =========================
-       MOBILE
-       ========================= */
-
-    @media (max-width: 700px) {
-
-      .landing {
-        padding: 24px 22px;
-        min-height: 100svh;
-      }
-
-      .location {
         display: none;
-      }
 
-      nav a {
-        margin-left: 14px;
-        font-size: 12px;
-      }
+        align-items: center;
+        justify-content: center;
 
-      .landing h1 {
-        font-size: clamp(52px, 16vw, 90px);
-        line-height: 0.92;
-      }
+        background: rgba(0, 0, 0, 0.75);
 
-      .landing footer {
-        font-size: 11px;
-      }
+        z-index: 10;
 
-      section {
-        padding: 80px 22px;
-      }
-
-      /*
-        The video remains visible on mobile,
-        but is slightly darker for readability.
-      */
-
-      .video-overlay {
-        background: rgba(0, 0, 0, 0.55);
-      }
+        padding: 20px;
     }
-  </style>
-</head
+
+    .password-modal.active {
+        display: flex;
+    }
+
+
+    /* ------------------------------
+       PASSWORD BOX
+    ------------------------------ */
+
+    .password-box {
+        width: 100%;
+        max-width: 400px;
+
+        padding: 40px;
+
+        background: rgba(15, 15, 15, 0.95);
+
+        border: 1px solid rgba(255, 255, 255, 0.2);
+
+        text-align: center;
+    }
+
+    .password-box h2 {
+        margin-bottom: 10px;
+
+        font-size: 18px;
+        font-weight: 400;
+
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .password-box p {
+        margin-bottom: 25px;
+
+        font-size: 13px;
+        line-height: 1.6;
+
+        color: rgba(255, 255, 255, 0.65);
+    }
+
+
+    /* ------------------------------
+       PASSWORD INPUT
+    ------------------------------ */
+
+    .password-input {
+        width: 100%;
+
+        padding: 13px 14px;
+
+        margin-bottom: 12px;
+
+        border: 1px solid rgba(255, 255, 255, 0.3);
+
+        background: transparent;
+        color: #fff;
+
+        font-size: 14px;
+
+        outline: none;
+
+        text-align: center;
+    }
+
+    .password-input:focus {
+        border-color: #fff;
+    }
+
+    .password-input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+
+    /* ------------------------------
+       ENTER BUTTON
+    ------------------------------ */
+
+    .submit-button {
+        width: 100%;
+
+        padding: 13px;
+
+        border: 1px solid #fff;
+
+        background: #fff;
+        color: #000;
+
+        font-size: 12px;
+        font-weight: 600;
+
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+
+        cursor: pointer;
+
+        transition:
+            background 0.3s ease,
+            color 0.3s ease;
+    }
+
+    .submit-button:hover {
+        background: transparent;
+        color: #fff;
+    }
+
+
+    /* ------------------------------
+       ERROR MESSAGE
+    ------------------------------ */
+
+    .error-message {
+        display: none;
+
+        margin-top: 15px;
+
+        color: #ff6b6b;
+
+        font-size: 12px;
+    }
+
+    .error-message.show {
+        display: block;
+    }
+
+
+    /* ------------------------------
+       CLOSE BUTTON
+    ------------------------------ */
+
+    .close-button {
+        margin-top: 20px;
+
+        border: none;
+        background: none;
+
+        color: rgba(255, 255, 255, 0.5);
+
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+
+        cursor: pointer;
+    }
+
+    .close-button:hover {
+        color: #fff;
+    }
+
+
+    /* ------------------------------
+       MOBILE
+    ------------------------------ */
+
+    @media (max-width: 600px) {
+
+        .title {
+            font-size: 2rem;
+            padding: 0 20px;
+        }
+
+        .work-button {
+            padding: 14px 24px;
+        }
+
+        .password-box {
+            padding: 30px 25px;
+        }
+
+    }
+
+</style>
+
+</head> <body>
+<!-- =================================
+     BACKGROUND VIDEO
+================================== -->
+
+<video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+>
+    <source src="hero.mp4" type="video/mp4">
+
+    Your browser does not support the video tag.
+</video>
+
+
+<!-- Darkens the video slightly -->
+<div class="overlay"></div>
+
+
+<!-- =================================
+     HOMEPAGE CONTENT
+================================== -->
+
+<main class="hero">
+
+    <!-- Change this to your name / production company -->
+    <h1 class="title">
+        YOUR NAME
+    </h1>
+
+    <button
+        class="work-button"
+        id="viewWorkButton"
+        type="button"
+    >
+        View My Work
+    </button>
+
+</main>
+
+
+<!-- =================================
+     PASSWORD MODAL
+================================== -->
+
+<div
+    class="password-modal"
+    id="passwordModal"
+>
+
+    <div class="password-box">
+
+        <h2>Private Reels</h2>
+
+        <p>
+            Enter the password to view my work.
+        </p>
+
+        <form id="passwordForm">
+
+            <input
+                type="password"
+                id="passwordInput"
+                class="password-input"
+                placeholder="Password"
+                autocomplete="off"
+                required
+            >
+
+            <button
+                type="submit"
+                class="submit-button"
+            >
+                Enter
+            </button>
+
+        </form>
+
+        <div
+            class="error-message"
+            id="errorMessage"
+        >
+            Incorrect password. Please try again.
+        </div>
+
+        <button
+            class="close-button"
+            id="closeButton"
+            type="button"
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =================================
+     JAVASCRIPT
+================================== -->
+
+<script>
+
+    /*
+     * ----------------------------------
+     * PASSWORD
+     * ----------------------------------
+     *
+     * CHANGE THIS PASSWORD.
+     *
+     * Example:
+     * const correctPassword = "myreels2026";
+     *
+     */
+
+    const correctPassword = "CHANGE-ME";
+
+
+    /*
+     * ----------------------------------
+     * ELEMENTS
+     * ----------------------------------
+     */
+
+    const viewWorkButton =
+        document.getElementById("viewWorkButton");
+
+    const passwordModal =
+        document.getElementById("passwordModal");
+
+    const passwordInput =
+        document.getElementById("passwordInput");
+
+    const passwordForm =
+        document.getElementById("passwordForm");
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const closeButton =
+        document.getElementById("closeButton");
+
+
+    /*
+     * ----------------------------------
+     * OPEN PASSWORD WINDOW
+     * ----------------------------------
+     */
+
+    viewWorkButton.addEventListener("click", function () {
+
+        passwordModal.classList.add("active");
+
+        passwordInput.focus();
+
+    });
+
+
+    /*
+     * ----------------------------------
+     * CHECK PASSWORD
+     * ----------------------------------
+     */
+
+    passwordForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const enteredPassword =
+            passwordInput.value;
+
+        if (enteredPassword === correctPassword) {
+
+            /*
+             * Correct password:
+             * go to reels.html
+             */
+
+            window.location.href = "reels.html";
+
+        } else {
+
+            /*
+             * Incorrect password
+             */
+
+            errorMessage.classList.add("show");
+
+            passwordInput.value = "";
+
+            passwordInput.focus();
+
+        }
+
+    });
+
+
+    /*
+     * ----------------------------------
+     * CLOSE PASSWORD WINDOW
+     * ----------------------------------
+     */
+
+    closeButton.addEventListener("click", function () {
+
+        passwordModal.classList.remove("active");
+
+        passwordInput.value = "";
+
+        errorMessage.classList.remove("show");
+
+    });
+
+
+    /*
+     * ----------------------------------
+     * ESCAPE KEY
+     * ----------------------------------
+     */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            passwordModal.classList.remove("active");
+
+            passwordInput.value = "";
+
+            errorMessage.classList.remove("show");
+
+        }
+
+    });
+
+</script>
+
+</body> </html>
