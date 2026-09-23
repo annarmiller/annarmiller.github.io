@@ -80,13 +80,17 @@
 
 
         .password-box h1 {
-            font-size: 28px;
+            font-size: 22px;
 
             font-weight: 400;
 
-            letter-spacing: -0.04em;
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
 
             margin-bottom: 12px;
+
+            color: #f3f1ed;
         }
 
 
@@ -188,7 +192,7 @@
         .portfolio-header {
             display: flex;
 
-            align-items: baseline;
+            align-items: center;
 
             justify-content: space-between;
 
@@ -197,15 +201,25 @@
 
 
         .portfolio-title {
-            font-size: 18px;
+            font-size: 16px;
 
             font-weight: 400;
 
-            letter-spacing: -0.03em;
+            letter-spacing: 0.05em;
+
+            text-transform: uppercase;
+
+            color: #f3f1ed;
         }
 
 
         .back-link {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
             color: rgba(243, 241, 237, 0.65);
 
             text-decoration: none;
@@ -215,11 +229,22 @@
             text-transform: uppercase;
 
             letter-spacing: 0.06em;
+
+            transition: color 0.2s ease;
         }
 
 
         .back-link:hover {
             color: #f3f1ed;
+        }
+
+
+        .back-arrow {
+            font-size: 16px;
+
+            line-height: 1;
+
+            margin-top: -1px;
         }
 
 
@@ -417,12 +442,19 @@
 
 
             .portfolio-title {
-                font-size: 16px;
+                font-size: 14px;
             }
 
 
             .back-link {
                 font-size: 10px;
+
+                gap: 5px;
+            }
+
+
+            .back-arrow {
+                font-size: 15px;
             }
 
 
@@ -471,7 +503,7 @@
         <div class="password-box">
 
             <h1>
-                Selected Work
+                SELECTED WORK
             </h1>
 
             <p>
@@ -520,14 +552,15 @@
         <header class="portfolio-header">
 
             <div class="portfolio-title">
-                Selected Work
+                ANNA R. MILLER
             </div>
 
             <a
                 class="back-link"
                 href="index.html"
             >
-                Back
+                <span class="back-arrow">←</span>
+                <span>BACK</span>
             </a>
 
         </header>
@@ -598,11 +631,11 @@
                 <img
                     class="project-image"
                     src="burns-thumbnail.jpg"
-                    alt="Ken Burns on his new American Revolution documentary"
+                    alt="Ken Burns on his American Revolution doc"
                 >
 
                 <div class="project-title">
-                    Ken Burns on his new American Revolution documentary
+                    Ken Burns on his American Revolution doc
                 </div>
 
                 <div class="project-meta">
@@ -670,11 +703,11 @@
                 <img
                     class="project-image"
                     src="ukraine-thumbnail.jpg"
-                    alt="Russia targets Ukraine's major retailers"
+                    alt="Surviving the war in Ukraine as a businessowner"
                 >
 
                 <div class="project-title">
-                    Russia targets Ukraine's major retailers
+                    Surviving the war in Ukraine as a businessowner
                 </div>
 
                 <div class="project-meta">
@@ -718,11 +751,11 @@
                 <img
                     class="project-image"
                     src="syria-thumbnail.jpg"
-                    alt="The Post-Assad Syria"
+                    alt="A new Syria?"
                 >
 
                 <div class="project-title">
-                    The Post-Assad Syria
+                    A new Syria?
                 </div>
 
                 <div class="project-meta">
@@ -813,7 +846,7 @@
 
                 <img
                     class="project-image"
-                    src="rivers-thumbnail.png"
+                    src="rivers-thumbnail.jpg"
                     alt="Saving Bosnia's Rivers"
                 >
 
