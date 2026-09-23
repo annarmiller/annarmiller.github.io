@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Selected Reels — Anna R. Miller</title>
+    <title>Selected Work — Anna R. Miller</title>
 
     <style>
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
+
+        /* ------------------------------
+           RESET
+        ------------------------------ */
 
         * {
             box-sizing: border-box;
@@ -18,334 +25,317 @@
         }
 
 
+        /* ------------------------------
+           BASE
+        ------------------------------ */
+
+        html,
         body {
+            width: 100%;
+            min-height: 100%;
+
             background: #111;
             color: #f3f1ed;
+
             font-family: "Inter", Helvetica, Arial, sans-serif;
-            min-height: 100vh;
         }
 
 
-        /* PAGE */
-
-        .page {
-            min-height: 100vh;
-            padding: 32px 40px;
+        body {
+            padding: 70px 50px 80px;
         }
 
 
-        /* HEADER */
+        /* ------------------------------
+           PASSWORD SCREEN
+        ------------------------------ */
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .password-screen {
+            position: fixed;
 
+            top: 0;
+            left: 0;
 
-        header a {
-            color: #f3f1ed;
-            text-decoration: none;
-            font-size: 13px;
-        }
-
-
-        header a:hover {
-            opacity: 0.65;
-        }
-
-
-        /* CONTENT */
-
-        .content {
             width: 100%;
-        }
+            height: 100%;
 
-
-        /* LOGIN */
-
-        .login {
-            min-height: calc(100vh - 64px);
+            background: #111;
 
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
 
+            z-index: 1000;
+
+            padding: 24px;
+        }
+
+
+        .password-box {
             width: 100%;
-            max-width: 420px;
-            margin: 0 auto;
+            max-width: 400px;
 
             text-align: center;
         }
 
 
-        .login h1 {
-            font-size: 14px;
+        .password-box h1 {
+            font-size: 28px;
+
             font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 45px;
+
+            letter-spacing: -0.04em;
+
+            margin-bottom: 12px;
         }
 
 
-        input {
+        .password-box p {
+            font-size: 12px;
+
+            color: rgba(243, 241, 237, 0.6);
+
+            margin-bottom: 28px;
+        }
+
+
+        .password-input {
             width: 100%;
 
+            padding: 14px 16px;
+
             background: transparent;
-            border: none;
-            border-bottom: 1px solid #666;
+
+            border: 1px solid rgba(243, 241, 237, 0.35);
 
             color: #f3f1ed;
 
-            padding: 15px 5px;
-
             font-family: inherit;
-            font-size: 18px;
+
+            font-size: 14px;
+
+            outline: none;
 
             text-align: center;
-            outline: none;
+
+            margin-bottom: 12px;
         }
 
 
-        input:focus {
-            border-bottom-color: #f3f1ed;
+        .password-input:focus {
+            border-color: rgba(243, 241, 237, 0.8);
         }
 
 
-        button {
-            margin-top: 30px;
+        .password-button {
+            width: 100%;
 
-            background: transparent;
-            color: #f3f1ed;
+            padding: 14px 16px;
 
-            border: 1px solid #666;
+            background: #f3f1ed;
 
-            padding: 12px 25px;
+            color: #111;
+
+            border: 1px solid #f3f1ed;
 
             font-family: inherit;
+
             font-size: 12px;
 
             text-transform: uppercase;
+
             letter-spacing: 0.05em;
 
             cursor: pointer;
-
-            transition: all 0.25s ease;
         }
 
 
-        button:hover {
-            background: #f3f1ed;
-            color: #111;
+        .password-button:hover {
+            background: transparent;
+
+            color: #f3f1ed;
         }
 
 
-        #error {
-            margin-top: 20px;
-            color: #999;
-            font-size: 12px;
+        .password-error {
+            margin-top: 12px;
+
+            font-size: 11px;
+
+            color: #d8a0a0;
+
             display: none;
         }
 
 
-        /* PORTFOLIO */
+        /* ------------------------------
+           PORTFOLIO
+        ------------------------------ */
 
-        #portfolio {
+        .portfolio {
             display: none;
-            padding: 70px 0 80px;
+
+            max-width: 1500px;
+
+            margin: 0 auto;
         }
 
 
-        /* REEL GRID */
+        /* ------------------------------
+           HEADER
+        ------------------------------ */
+
+        .portfolio-header {
+            display: flex;
+
+            align-items: baseline;
+
+            justify-content: space-between;
+
+            margin-bottom: 55px;
+        }
+
+
+        .portfolio-title {
+            font-size: 18px;
+
+            font-weight: 400;
+
+            letter-spacing: -0.03em;
+        }
+
+
+        .back-link {
+            color: rgba(243, 241, 237, 0.65);
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.06em;
+        }
+
+
+        .back-link:hover {
+            color: #f3f1ed;
+        }
+
+
+        /* ------------------------------
+           PROJECT GRID
+        ------------------------------ */
 
         .project-grid {
             display: grid;
 
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(3, 1fr);
 
-            column-gap: 28px;
-            row-gap: 70px;
-
-            width: 100%;
+            gap: 55px 28px;
         }
 
 
-        /* INDIVIDUAL PROJECT */
+        /* ------------------------------
+           PROJECT
+        ------------------------------ */
 
         .project {
-            width: 100%;
-        }
-
-
-        /* VIDEO THUMBNAIL */
-
-        .video-thumbnail {
-            position: relative;
-
-            width: 100%;
-            aspect-ratio: 16 / 9;
-
-            overflow: hidden;
-
             cursor: pointer;
-
-            background: #222;
         }
 
 
-        .video-thumbnail img {
+        .project-image {
             width: 100%;
-            height: 100%;
+
+            aspect-ratio: 16 / 9;
 
             object-fit: cover;
 
             display: block;
 
-            transition:
-                transform 0.5s ease,
-                opacity 0.5s ease;
+            background: #1a1a1a;
+
+            transition: opacity 0.25s ease;
         }
 
 
-        .video-thumbnail:hover img {
-            transform: scale(1.02);
-            opacity: 0.88;
+        .project:hover .project-image {
+            opacity: 0.72;
         }
 
-
-        /* PLAY BUTTON */
-
-        .play-button {
-            position: absolute;
-
-            top: 50%;
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-
-            width: 54px;
-            height: 54px;
-
-            border: 1px solid rgba(255, 255, 255, 0.8);
-
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: rgba(0, 0, 0, 0.15);
-
-            transition:
-                background 0.25s ease,
-                transform 0.25s ease;
-        }
-
-
-        .play-button::after {
-            content: "";
-
-            margin-left: 3px;
-
-            width: 0;
-            height: 0;
-
-            border-top: 7px solid transparent;
-            border-bottom: 7px solid transparent;
-            border-left: 11px solid #fff;
-        }
-
-
-        .video-thumbnail:hover .play-button {
-            background: rgba(0, 0, 0, 0.35);
-
-            transform:
-                translate(-50%, -50%)
-                scale(1.05);
-        }
-
-
-        /* PROJECT TITLE */
 
         .project-title {
             margin-top: 16px;
 
-            font-size: 16px;
+            font-size: 14px;
+
+            line-height: 1.45;
+
             font-weight: 400;
 
-            line-height: 1.4;
+            color: #f3f1ed;
         }
 
 
-        /* PROJECT DESCRIPTION */
+        .project-meta {
+            margin-top: 7px;
 
-        .project-description {
-            margin-top: 6px;
-
-            color: #888;
-
-            font-size: 12px;
+            font-size: 11px;
 
             line-height: 1.5;
+
+            color: rgba(243, 241, 237, 0.55);
         }
 
 
-        /* PLACEHOLDER REELS */
-
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-
-            background: #222;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: #666;
-
-            font-size: 12px;
-            letter-spacing: 0.05em;
-        }
-
-
-        /* LIGHTBOX */
+        /* ------------------------------
+           LIGHTBOX
+        ------------------------------ */
 
         .lightbox {
             position: fixed;
 
-            inset: 0;
+            top: 0;
+            left: 0;
 
-            z-index: 1000;
+            width: 100%;
+            height: 100%;
 
-            background: rgba(0, 0, 0, 0.82);
+            background: rgba(0, 0, 0, 0.92);
 
-            display: none;
+            display: flex;
 
             align-items: center;
             justify-content: center;
 
             padding: 40px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: opacity 0.25s ease;
+
+            z-index: 2000;
         }
 
 
         .lightbox.active {
-            display: flex;
+            opacity: 1;
+
+            visibility: visible;
         }
 
 
         .lightbox-video {
             position: relative;
 
-            width: min(1100px, 90vw);
+            width: 100%;
+
+            max-width: 1100px;
 
             aspect-ratio: 16 / 9;
-
-            background: #000;
-
-            box-shadow:
-                0 20px 80px rgba(0, 0, 0, 0.6);
         }
 
 
@@ -353,86 +343,98 @@
             width: 100%;
             height: 100%;
 
-            border: none;
+            border: 0;
 
             display: block;
         }
 
 
-        /* CLOSE BUTTON */
-
         .lightbox-close {
             position: absolute;
 
-            top: -45px;
+            top: -42px;
             right: 0;
 
-            margin: 0;
-            padding: 0;
+            background: none;
 
             border: none;
 
-            background: transparent;
-
             color: #f3f1ed;
 
-            font-size: 30px;
-            font-weight: 300;
+            font-size: 32px;
 
             line-height: 1;
 
+            font-family: Arial, sans-serif;
+
+            font-weight: 200;
+
             cursor: pointer;
+
+            padding: 0;
         }
 
 
         .lightbox-close:hover {
-            background: transparent;
-            color: #fff;
+            opacity: 0.65;
         }
 
 
-        /* TABLET */
+        /* ------------------------------
+           TABLET
+        ------------------------------ */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
+
+            body {
+                padding: 50px 30px 70px;
+            }
+
 
             .project-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(2, 1fr);
 
-                column-gap: 24px;
-                row-gap: 60px;
+                gap: 45px 24px;
             }
 
         }
 
 
-        /* MOBILE */
+        /* ------------------------------
+           MOBILE
+        ------------------------------ */
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
 
-            .page {
-                padding: 24px 22px;
+            body {
+                padding: 35px 20px 60px;
             }
 
 
-            #portfolio {
-                padding: 55px 0 60px;
+            .portfolio-header {
+                margin-bottom: 40px;
+            }
+
+
+            .portfolio-title {
+                font-size: 16px;
+            }
+
+
+            .back-link {
+                font-size: 10px;
             }
 
 
             .project-grid {
                 grid-template-columns: 1fr;
 
-                row-gap: 55px;
+                gap: 42px;
             }
 
 
             .project-title {
-                font-size: 16px;
-            }
-
-
-            .project-description {
-                font-size: 12px;
+                font-size: 14px;
             }
 
 
@@ -441,510 +443,814 @@
             }
 
 
-            .lightbox-video {
-                width: 100%;
-            }
-
-
             .lightbox-close {
-                top: -40px;
-                font-size: 26px;
+                top: -36px;
+
+                font-size: 28px;
             }
 
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-<div class="page">
+    <!-- =================================
+         PASSWORD SCREEN
+    ================================== -->
 
+    <div
+        class="password-screen"
+        id="password-screen"
+    >
 
-    <!-- HEADER -->
-
-    <header>
-
-        <a href="index.html">
-            ANNA R. MILLER
-        </a>
-
-        <a href="index.html">
-            ← Back
-        </a>
-
-    </header>
-
-
-    <div class="content">
-
-
-        <!-- PASSWORD SCREEN -->
-
-        <div class="login" id="login">
+        <div class="password-box">
 
             <h1>
-                Selected Reels
+                Selected Work
             </h1>
 
+            <p>
+                Enter password to view portfolio
+            </p>
 
             <input
+                class="password-input"
+                id="password-input"
                 type="password"
-                id="password"
                 placeholder="Password"
                 autocomplete="off"
             >
 
-
-            <button onclick="checkPassword()">
-                Enter →
+            <button
+                class="password-button"
+                onclick="checkPassword()"
+            >
+                Enter
             </button>
 
-
-            <div id="error">
+            <div
+                class="password-error"
+                id="password-error"
+            >
                 Incorrect password.
             </div>
 
         </div>
 
-
-        <!-- PORTFOLIO -->
-
-        <div id="portfolio">
+    </div>
 
 
-            <!-- REEL GRID -->
+    <!-- =================================
+         PORTFOLIO
+    ================================== -->
 
-            <div class="project-grid">
-
-
-                <!-- REEL 1 -->
-
-                <div class="project">
-
-                    <div
-                        class="video-thumbnail"
-                        onclick="openVideo()"
-                    >
-
-                        <img
-                            src="gaza-thumbnail.jpg"
-                            alt="What is life actually like in Gaza right now?"
-                        >
-
-                        <div class="play-button"></div>
-
-                    </div>
+    <main
+        class="portfolio"
+        id="portfolio"
+    >
 
 
-                    <div class="project-title">
-                        What is life actually like in Gaza right now?
-                    </div>
+        <!-- HEADER -->
+
+        <header class="portfolio-header">
+
+            <div class="portfolio-title">
+                Selected Work
+            </div>
+
+            <a
+                class="back-link"
+                href="index.html"
+            >
+                Back
+            </a>
+
+        </header>
 
 
-                    <div class="project-description">
-                        <em>Fareed Zakaria GPS</em> | Aired June 01, 2025
-                    </div>
+        <!-- =================================
+             PROJECT GRID
+        ================================== -->
 
+        <div class="project-grid">
+
+
+            <!-- 1. GAZA -->
+
+            <article
+                class="project"
+                onclick="openVideo()"
+            >
+
+                <img
+                    class="project-image"
+                    src="gaza-thumbnail.jpg"
+                    alt="What is life actually like in Gaza right now?"
+                >
+
+                <div class="project-title">
+                    What is life actually like in Gaza right now?
                 </div>
 
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired June 01, 2025
+                </div>
 
-                <!-- REEL 2 -->
+            </article>
 
-<div class="project">
+
+            <!-- 2. SUDAN -->
+
+            <article
+                class="project"
+                onclick="openVideo2()"
+            >
+
+                <img
+                    class="project-image"
+                    src="sudan-thumbnail.jpg"
+                    alt="The world's worst humanitarian crises"
+                >
+
+                <div class="project-title">
+                    The world's worst humanitarian crises
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired December 15, 2024
+                </div>
+
+            </article>
+
+
+            <!-- 3. KEN BURNS -->
+
+            <article
+                class="project"
+                onclick="openVideo3()"
+            >
+
+                <img
+                    class="project-image"
+                    src="burns-thumbnail.jpg"
+                    alt="Ken Burns on his American Revolution doc"
+                >
+
+                <div class="project-title">
+                    Ken Burns on his American Revolution doc
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired November 11, 2025
+                </div>
+
+            </article>
+
+
+            <!-- 4. ODYSSEY -->
+
+            <article
+                class="project"
+                onclick="openVideo4()"
+            >
+
+                <img
+                    class="project-image"
+                    src="odyssey-thumbnail.jpg"
+                    alt="The Odyssey: Christopher Nolan vs. Homer"
+                >
+
+                <div class="project-title">
+                    The Odyssey: Christopher Nolan vs. Homer
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired July 19, 2026
+                </div>
+
+            </article>
+
+
+            <!-- 5. TURKEY -->
+
+            <article
+                class="project"
+                onclick="openVideo5()"
+            >
+
+                <img
+                    class="project-image"
+                    src="turkey-thumbnail.jpg"
+                    alt="Turkey's transformation under Erdogan"
+                >
+
+                <div class="project-title">
+                    Turkey's transformation under Erdogan
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired May 24, 2026
+                </div>
+
+            </article>
+
+
+            <!-- 6. UKRAINE -->
+
+            <article
+                class="project"
+                onclick="openVideo6()"
+            >
+
+                <img
+                    class="project-image"
+                    src="ukraine-thumbnail.jpg"
+                    alt="Surviving the war in Ukraine as a businessowner"
+                >
+
+                <div class="project-title">
+                    Surviving the war in Ukraine as a businessowner
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired September 13, 2026
+                </div>
+
+            </article>
+
+
+            <!-- 7. DIRE WOLF -->
+
+            <article
+                class="project"
+                onclick="openVideo7()"
+            >
+
+                <img
+                    class="project-image"
+                    src="wolf-thumbnail.jpg"
+                    alt="Bringing the dire wolf back from extinction"
+                >
+
+                <div class="project-title">
+                    Bringing the dire wolf back from extinction
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired June 29, 2025
+                </div>
+
+            </article>
+
+
+            <!-- 8. SYRIA -->
+
+            <article
+                class="project"
+                onclick="openVideo8()"
+            >
+
+                <img
+                    class="project-image"
+                    src="syria-thumbnail.jpg"
+                    alt="A new Syria?"
+                >
+
+                <div class="project-title">
+                    A new Syria?
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired July 7, 2026
+                </div>
+
+            </article>
+
+
+            <!-- 9. OUTER SPACE -->
+
+            <article
+                class="project"
+                onclick="openVideo9()"
+            >
+
+                <img
+                    class="project-image"
+                    src="space-thumbnail.jpg"
+                    alt="Building the future... in outer space"
+                >
+
+                <div class="project-title">
+                    Building the future... in outer space
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired June 28, 2026
+                </div>
+
+            </article>
+
+
+            <!-- 10. PENN STATION -->
+
+            <article
+                class="project"
+                onclick="openVideo10()"
+            >
+
+                <img
+                    class="project-image"
+                    src="pennstation-thumbnail.jpg"
+                    alt="The re-making of Penn Station"
+                >
+
+                <div class="project-title">
+                    The re-making of Penn Station
+                </div>
+
+                <div class="project-meta">
+                    <em>Fareed Zakaria GPS</em> | Aired July 6, 2025
+                </div>
+
+            </article>
+
+
+            <!-- 11. BOSNIA -->
+
+            <article
+                class="project"
+                onclick="openVideo11()"
+            >
+
+                <img
+                    class="project-image"
+                    src="bosnia-thumbnail.png"
+                    alt="Ukrainians in Bosnia grapple with the Russian invasion at home"
+                >
+
+                <div class="project-title">
+                    Ukrainians in Bosnia grapple with the Russian invasion at home
+                </div>
+
+                <div class="project-meta">
+                    <em>PBS NewsHour</em> | Aired March 27, 2022
+                </div>
+
+            </article>
+
+
+            <!-- 12. RIVERS -->
+
+            <article
+                class="project"
+                onclick="openVideo12()"
+            >
+
+                <img
+                    class="project-image"
+                    src="rivers-thumbnail.jpg"
+                    alt="Saving Bosnia's Rivers"
+                >
+
+                <div class="project-title">
+                    Saving Bosnia's Rivers
+                </div>
+
+                <div class="project-meta">
+                    <em>Journeyman</em> | September 26, 2022
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =================================
+         VIDEO LIGHTBOX
+    ================================== -->
 
     <div
-        class="video-thumbnail"
-        onclick="openVideo2()"
+        class="lightbox"
+        id="lightbox"
+        onclick="closeVideo(event)"
     >
 
-        <img
-            src="sudan-thumbnail.jpg"
-            alt="The world's worst humanitarian crises"
-        >
+        <div class="lightbox-video">
 
-        <div class="play-button"></div>
+            <button
+                class="lightbox-close"
+                onclick="closeVideo()"
+                aria-label="Close video"
+            >
+                ×
+            </button>
 
-    </div>
-
-    <div class="project-title">
-        The world's worst humanitarian crises
-    </div>
-
-    <div class="project-description">
-        <em>Fareed Zakaria GPS</em> | Aired December 15, 2024
-    </div>
-
-</div>
-
-                <!-- REEL 3 -->
-
-<div class="project">
-
-    <div
-        class="video-thumbnail"
-        onclick="openVideo3()"
-    >
-
-        <img
-            src="wolf-thumbnail.jpg"
-            alt="Bringing the dire wolf back from extinction"
-        >
-
-        <div class="play-button"></div>
-
-    </div>
-
-    <div class="project-title">
-        Bringing the dire wolf back from extinction
-    </div>
-
-    <div class="project-description">
-        <em>Fareed Zakaria GPS</em> | Aired June 29, 2025
-    </div>
-
-</div>
-
-                <!-- REEL 4 -->
-
-                <div class="project">
-
-    <div
-        class="video-thumbnail"
-        onclick="openVideo4()"
-    >
-
-        <img
-            src="ukraine-thumbnail.jpg"
-            alt="Surviving the war in Ukraine as a businessowner"
-        >
-
-        <div class="play-button"></div>
-
-    </div>
-
-    <div class="project-title">
-        Surviving the war in Ukraine as a businessowner
-    </div>
-
-    <div class="project-description">
-        <em>Fareed Zakaria GPS</em> | Aired September 13, 2026
-    </div>
-
-</div>
-
-
-                <!-- REEL 5 -->
-
-              <div class="project">
-
-    <div
-        class="video-thumbnail"
-        onclick="openVideo5()"
-    >
-
-        <img
-            src="space-thumbnail.jpg"
-            alt="Building the future... in outer space"
-        >
-
-        <div class="play-button"></div>
-
-    </div>
-
-    <div class="project-title">
-        Building the future... in outer space
-    </div>
-
-    <div class="project-description">
-        <em>Fareed Zakaria GPS</em> | Aired June 28, 2026
-    </div>
-
-</div>
-
-
-                <!-- REEL 6 -->
-
-                 <div class="project">
-
-    <div
-        class="video-thumbnail"
-        onclick="openVideo6()"
-    >
-
-        <img
-            src="bosnia-thumbnail.png"
-            alt="Ukrainians in Bosnia grapple with the Russian invasion at home"
-        >
-
-        <div class="play-button"></div>
-
-    </div>
-
-    <div class="project-title">
-        Ukrainians in Bosnia grapple with the Russian invasion at home
-    </div>
-
-    <div class="project-description">
-        <em>PBS NewsHour</em> | Aired March 27, 2022
-    </div>
-
-
-            </div>
+            <iframe
+                id="video-frame"
+                src=""
+                title="Selected work video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
 
         </div>
 
     </div>
 
-</div>
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script>
 
 
-<!-- VIDEO LIGHTBOX -->
+        /* ------------------------------
+           PASSWORD
+        ------------------------------ */
 
-<div
-    class="lightbox"
-    id="lightbox"
-    onclick="closeVideo(event)"
->
+        function checkPassword() {
 
+            const input =
+                document.getElementById("password-input");
 
-    <div class="lightbox-video">
+            const error =
+                document.getElementById("password-error");
 
+            const passwordScreen =
+                document.getElementById("password-screen");
 
-        <button
-            class="lightbox-close"
-            onclick="closeVideo()"
-            aria-label="Close video"
-        >
-            ×
-        </button>
+            const portfolio =
+                document.getElementById("portfolio");
 
 
-        <iframe
-            id="video-frame"
-            src=""
-            title="What is life actually like in Gaza right now?"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-        </iframe>
+            if (input.value === "CHANGE-ME") {
 
+                passwordScreen.style.display = "none";
 
-    </div>
+                portfolio.style.display = "block";
 
-</div>
+            } else {
 
+                error.style.display = "block";
 
-<script>
+                input.value = "";
 
-
-    /* PASSWORD */
-
-    function checkPassword() {
-
-        const password =
-            document.getElementById("password").value;
-
-
-        const correctPassword =
-            "CHANGE-ME";
-
-
-        if (password === correctPassword) {
-
-            document.getElementById("login").style.display =
-                "none";
-
-            document.getElementById("portfolio").style.display =
-                "block";
-
-        } else {
-
-            document.getElementById("error").style.display =
-                "block";
-
-        }
-
-    }
-
-
-    /* ENTER KEY FOR PASSWORD */
-
-    document
-        .getElementById("password")
-        .addEventListener("keydown", function(event) {
-
-            if (event.key === "Enter") {
-
-                checkPassword();
+                input.focus();
 
             }
 
-        });
+        }
 
 
-    /* OPEN REEL 1 */
+        /* Allow Enter key to submit password */
 
-    function openVideo() {
+        document
+            .getElementById("password-input")
+            .addEventListener("keydown", function(event) {
 
-        const lightbox =
-            document.getElementById("lightbox");
+                if (event.key === "Enter") {
 
+                    checkPassword();
 
-        const videoFrame =
-            document.getElementById("video-frame");
+                }
 
-
-        videoFrame.src =
-            "https://www.youtube-nocookie.com/embed/qqrm6Ov439o?autoplay=1&rel=0";
-
-
-        lightbox.classList.add("active");
+            });
 
 
-        document.body.style.overflow =
-            "hidden";
+        /* ------------------------------
+           OPEN VIDEO 1 — GAZA
+        ------------------------------ */
 
-    }
+        function openVideo() {
 
+            const lightbox =
+                document.getElementById("lightbox");
 
-    /* OPEN REEL 2 */
-
-    function openVideo2() {
-
-        const lightbox =
-            document.getElementById("lightbox");
-
-
-        const videoFrame =
-            document.getElementById("video-frame");
+            const videoFrame =
+                document.getElementById("video-frame");
 
 
-        videoFrame.src =
-            "https://www.youtube-nocookie.com/embed/vy5V6ctXc3Q?autoplay=1&rel=0";
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/qqrm6Ov439o?autoplay=1";
 
 
-        lightbox.classList.add("active");
+            lightbox.classList.add("active");
 
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-    /* OPEN REEL 3 */
-
-    function openVideo3() {
-        const lightbox =
-            document.getElementById("lightbox");
-
-        const videoFrame =
-            document.getElementById("video-frame");
-
-        videoFrame.src =
-            "https://www.youtube-nocookie.com/embed/l76bvX9BHSE?autoplay=1&rel=0";
-
-        lightbox.classList.add("active");
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
-    /* OPEN REEL 4 */
-
-    function openVideo4() {
-        const lightbox =
-            document.getElementById("lightbox");
-
-        const videoFrame =
-            document.getElementById("video-frame");
-
-        videoFrame.src =
-            "https://www.youtube-nocookie.com/embed/tnr-bVqeEpI?autoplay=1&rel=0";
-
-        lightbox.classList.add("active");
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
-    /* OPEN REEL 5 */
-
-    function openVideo5() {
-        const lightbox =
-            document.getElementById("lightbox");
-
-        const videoFrame =
-            document.getElementById("video-frame");
-
-        videoFrame.src =
-            "https://www.youtube-nocookie.com/embed/UTC5ehV0bCo?autoplay=1&rel=0";
-
-        lightbox.classList.add("active");
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
-    /* OPEN REEL 6 */
-
-    function openVideo6() {
-        const lightbox =
-            document.getElementById("lightbox");
-
-        const videoFrame =
-            document.getElementById("video-frame");
-
-        videoFrame.src =
-            "https://www.youtube-nocookie.com/embed/YrWs8jJCiZg?autoplay=1&rel=0";
-
-        lightbox.classList.add("active");
-
-        document.body.style.overflow =
-            "hidden";
-    }
-
-
-
-    /* CLOSE VIDEO */
-
-    function closeVideo(event) {
-
-        if (
-            event &&
-            event.target !== document.getElementById("lightbox")
-        ) {
-
-            return;
+            document.body.style.overflow = "hidden";
 
         }
 
 
-        const lightbox =
-            document.getElementById("lightbox");
+        /* ------------------------------
+           OPEN VIDEO 2 — SUDAN
+        ------------------------------ */
+
+        function openVideo2() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
 
 
-        const videoFrame =
-            document.getElementById("video-frame");
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/vy5V6ctXc3Q?autoplay=1";
 
 
-        videoFrame.src = "";
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
 
 
-        lightbox.classList.remove("active");
+        /* ------------------------------
+           OPEN VIDEO 3 — KEN BURNS
+        ------------------------------ */
+
+        function openVideo3() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
 
 
-        document.body.style.overflow = "";
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/D8dgJ8q9Mmg?autoplay=1";
 
-    }
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
 
 
-</script>
+        /* ------------------------------
+           OPEN VIDEO 4 — ODYSSEY
+        ------------------------------ */
+
+        function openVideo4() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/ZZXGd8wY9ic?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           OPEN VIDEO 5 — TURKEY
+        ------------------------------ */
+
+        function openVideo5() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/fKkow3LeK9Y?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           OPEN VIDEO 6 — UKRAINE
+        ------------------------------ */
+
+        function openVideo6() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/tnr-bVqeEpI?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           OPEN VIDEO 7 — DIRE WOLF
+        ------------------------------ */
+
+        function openVideo7() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/l76bvX9BHSE?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           OPEN VIDEO 8 — SYRIA
+        ------------------------------ */
+
+        function openVideo8() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/PtLz1GUZ8SA?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           OPEN VIDEO 9 — OUTER SPACE
+        ------------------------------ */
+
+        function openVideo9() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/UTC5ehV0bCo?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           OPEN VIDEO 10 — PENN STATION
+        ------------------------------ */
+
+        function openVideo10() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/NsWxRSKgWlE?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           OPEN VIDEO 11 — BOSNIA
+        ------------------------------ */
+
+        function openVideo11() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/YrWs8jJCiZg?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           OPEN VIDEO 12 — RIVERS
+        ------------------------------ */
+
+        function openVideo12() {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src =
+                "https://www.youtube-nocookie.com/embed/jTxE3t8Ass4?autoplay=1";
+
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        /* ------------------------------
+           CLOSE VIDEO
+        ------------------------------ */
+
+        function closeVideo(event) {
+
+            if (
+                event &&
+                event.target !==
+                document.getElementById("lightbox")
+            ) {
+
+                return;
+
+            }
+
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+            const videoFrame =
+                document.getElementById("video-frame");
+
+
+            videoFrame.src = "";
+
+            lightbox.classList.remove("active");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+    </script>
 
 
 </body>
+
 </html>
